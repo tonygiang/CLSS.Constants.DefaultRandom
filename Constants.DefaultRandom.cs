@@ -6,9 +6,12 @@ namespace CLSS
 {
   public partial class DefaultRandom
   {
+    private static readonly Random _instance = new Random();
+    private static readonly object _instanceLock = new object();
     /// <summary>
     /// A default-constructed instance of the System.Random class.
     /// </summary>
-    public static readonly Random Instance = new Random();
+    public static Random Instance
+    { get { lock (_instanceLock) { return _instance; } } }
   }
 }
