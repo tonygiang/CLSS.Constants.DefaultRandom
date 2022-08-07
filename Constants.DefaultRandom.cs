@@ -6,12 +6,32 @@ namespace CLSS
 {
   public partial class DefaultRandom
   {
-    private static readonly Random _instance = new Random();
-    private static readonly object _instanceLock = new object();
     /// <summary>
     /// A default-constructed instance of the System.Random class.
     /// </summary>
-    public static Random Instance
-    { get { lock (_instanceLock) { return _instance; } } }
+    public static readonly Random Instance = new AtomicRandom();
+  }
+
+  sealed class AtomicRandom : Random
+  {
+    readonly object _internalLock = new object();
+
+    public override int Next()
+    { lock (_internalLock) { return base.Next(); } }
+
+    public override int Next(int maxValue)
+    { lock (_internalLock) { return base.Next(maxValue); } }
+
+    public override int Next(int minValue, int maxValue)
+    { lock (_internalLock) { return base.Next(minValue, maxValue); } }
+
+    public override void NextBytes(byte[] buffer)
+    { lock (_internalLock) { base.NextBytes(buffer); } }
+
+    public override double NextDouble()
+    { lock (_internalLock) { return base.NextDouble(); } }
+
+    protected override double Sample()
+    { lock (_internalLock) { return base.Sample(); } }
   }
 }
