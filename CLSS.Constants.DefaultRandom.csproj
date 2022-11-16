@@ -10,8 +10,8 @@
     <RepositoryUrl>https://github.com/tonygiang/CLSS.Constants.DefaultRandom</RepositoryUrl>
     <PackageTags>CLSS</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.2</Version>
-    <PackageReleaseNotes>- Improve the thread safetyness of DefaultRandom by making it atomic.</PackageReleaseNotes>
+    <Version>1.2.1</Version>
+    <PackageReleaseNotes>- Improved comment.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

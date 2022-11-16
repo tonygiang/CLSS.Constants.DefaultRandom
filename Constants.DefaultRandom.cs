@@ -7,7 +7,8 @@ namespace CLSS
   public partial class DefaultRandom
   {
     /// <summary>
-    /// A default-constructed instance of the System.Random class.
+    /// A default-constructed, thread-safe instance of the <see cref="Random"/>
+    /// class.
     /// </summary>
     public static readonly Random Instance = new AtomicRandom();
   }
